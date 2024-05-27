@@ -45,6 +45,8 @@ def run_optimization(data_path: str, num_trials: int):
             mlflow.log_metric("rmse",rmse)
             # best rmse 5.35
             
+            mlflow.log_artifact(local_path="models/lin_reg.bin", artifact_path="model_pickle")
+            mlflow.sklearn.log_model(RandomForestRegressor, artifact_path="model_mlflow")
 
         return {'loss': rmse, 'status': STATUS_OK}
 
@@ -65,8 +67,13 @@ def run_optimization(data_path: str, num_trials: int):
         trials=Trials(),
         rstate=rstate
     )
-    
+
+
+import mlflow
+logged_model = 'runs:/53c8831656ef45779bf938ce878043d5/model_mlflow'
 
 
 if __name__ == '__main__':
     run_optimization()
+    loaded_model = mlflow.pyfunc.load_model(logged_model)
+    print("loaded", loaded_model)   
