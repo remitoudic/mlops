@@ -13,19 +13,14 @@ if 'test' not in globals():
 
 @data_loader
 def ingest_files(**kwargs) -> pd.DataFrame:
-    dfs: List[pd.DataFrame] = []
 
-    for year, months in [(2023, (1, 3))]:
-        for i in range(*months):
-            response = requests.get(
-                'https://github.com/mage-ai/datasets/raw/master/taxi/green'
-                f'/{year}/{i:02d}.parquet'
+    response = requests.get(
+               "https://github.com/remitoudic/mlops/raw/main/week3/datasets/yellow/2023/03.parquet"
             )
 
-            if response.status_code != 200:
-                raise Exception(response.text)
+    if response.status_code != 200:
+        raise Exception(response.text)
 
-            df = pd.read_parquet(BytesIO(response.content))
-            dfs.append(df)
-
-    return pd.concat(dfs)
+    df = pd.read_parquet(BytesIO(response.content))
+    
+    return df

@@ -1,6 +1,7 @@
 *** WEEK3 OCHESTRATION
 
-* to start MAGE: sh ./scripts/start.sh
+* to start MAGE:  ./scripts/start.sh
+* webUI: 
 
 debuging links: 
     * https://stackoverflow.com/questions/51451095/git-warning-unable-to-access-home-user-gitconfig-is-a-directory
