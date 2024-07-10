@@ -1,1 +1,13 @@
 mlflow
+jupyter
+scikit-learn
+pandas
+seaborn
+hyperopt
+xgboost
+fastparquet
+
+requests-cache 
+retry-requests 
+numpy  
+skforecast

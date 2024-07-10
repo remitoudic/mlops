@@ -1,0 +1,14 @@
+FROM python:3.10-slim
+
+WORKDIR /MLflow
+COPY ./MLflow/requirements.txt /MLflow/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir --upgrade -r /MLflow/requirements.txt
+
+
+CMD [ \
+    "mlflow", "server", \
+    "--backend-store-uri", "sqlite:///./mlflow.db", \
+    "--host", "0.0.0.0", \
+    "--port", "5000" \
+]
