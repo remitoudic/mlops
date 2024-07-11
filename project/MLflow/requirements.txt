@@ -11,3 +11,6 @@ requests-cache
 retry-requests 
 numpy  
 skforecast
+
+xlrd 
+matplotlib
